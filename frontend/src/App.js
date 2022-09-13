@@ -8,12 +8,14 @@ function App() {
   return (
     <Router>
       <MainNavigation />
-      <Switch>
-        <Route path="/" exact><Users /></Route>
-        <Route path="/places/new" exact><NewPlace /></Route>
+      <main>
+        <Switch>
+          <Route path="/" exact><Users /></Route>
+          <Route path="/places/new" exact><NewPlace /></Route>
 
-        <Redirect to="/" />
-      </Switch>
+          <Redirect to="/" />
+        </Switch>
+      </main>
     </Router>
   )
 }
