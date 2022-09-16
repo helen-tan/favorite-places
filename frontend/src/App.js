@@ -13,7 +13,7 @@ function App() {
         <Switch>
           <Route path="/" exact><Users /></Route>
           <Route path="/places/new" exact><NewPlace /></Route>
-          <Route path="/:userId/places" exact><UserPlaces></UserPlaces></Route>
+          <Route path="/:userId/places" exact><UserPlaces /></Route>
           <Redirect to="/" />
         </Switch>
       </main>
