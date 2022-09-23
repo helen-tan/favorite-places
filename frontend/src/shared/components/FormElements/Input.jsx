@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react'
+import React, { useReducer, useEffect } from 'react'
 import { validate } from '../../util/validators'
 import './Input.css'
 
@@ -21,7 +21,21 @@ const inputReducer = (state, action) => {
 }
 
 const Input = (props) => {
-  const [inputState, dispatch] = useReducer(inputReducer, {value: '', isTouched: false, isValid: false})
+  const [inputState, dispatch] = useReducer(inputReducer, {
+    value: '',
+    isTouched: false,
+    isValid: false
+  })
+
+  // Destructure the relevant pieces for useEffect
+  // so that we don't have to put props & inputState as dependencies which would cause an infinite loop
+  const { id, onInput } = props;
+  const { value, isValid } = inputState;
+
+  // Forward the state to NewPlace.jsx
+  useEffect(() => {
+    onInput(id, value, isValid)
+  }, [onInput, id, value, isValid])
 
   // Store and validate textarea keystrokes
   const changeHandler = e => {
